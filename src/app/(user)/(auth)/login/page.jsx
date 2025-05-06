@@ -1,13 +1,13 @@
 // File: app/login/page.jsx
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-export default function LoginPage() {
+ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -155,4 +155,11 @@ export default function LoginPage() {
       </div>
     </div>
   );
+}
+
+
+export default function LoginPageDefault (){
+return <Suspense>
+<LoginPage></LoginPage>
+</Suspense>
 }
