@@ -1,12 +1,12 @@
 // app/laundry-shops/page.jsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Star, Search, Filter } from 'lucide-react';
 
-export default function LaundryShopsPage() {
+ function LaundryShopsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -268,4 +268,10 @@ export default function LaundryShopsPage() {
       )}
     </div>
   );
+}
+
+export default function SuspansePage(){
+return <Suspense>
+  <LaundryShopsPage></LaundryShopsPage>
+</Suspense>
 }
