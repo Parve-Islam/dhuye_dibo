@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import connect from '@/lib/dbConnect'; 
 import User from '@/models/User';
 import bcrypt from 'bcrypt';
+import dbConnect from '@/lib/dbConnect';
 
-connect();
+// dbConnect to the database
+dbConnect();
 
 export async function PUT(request) {
   try {

@@ -1,4 +1,3 @@
-import { sendOTPEmail, generateOTP } from '../../../utils/email';
 import dbConnect from '@/lib/dbConnect';
 import User from '@/models/User';
 
@@ -23,7 +22,7 @@ export async function POST(req) {
     await user.save();
 
     // Send new OTP
-    await sendOTPEmail(email, newOTP);
+    // await sendOTPEmail(email, newOTP);
 
     return new Response(JSON.stringify({ message: 'New OTP sent to your email' }), { status: 200 });
     

@@ -1,11 +1,11 @@
 
 // app/api/admin/laundry-shops/[id]/menu/route.js
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/db';
 import LaundryShop from '@/models/LaundryShop';
 import { getServerSession } from 'next-auth';
 import mongoose from 'mongoose';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import dbConnect from '@/lib/dbConnect';
 
 // Helper function to check if user is admin
 async function isAdmin(req) {
@@ -26,7 +26,7 @@ export async function GET(req, { params }) {
       return NextResponse.json({ error: 'Invalid shop ID' }, { status: 400 });
     }
     
-    await connectDB();
+    await dbConnect();
     const laundryShop = await LaundryShop.findById(id, 'menu');
     
     if (!laundryShop) {
@@ -53,7 +53,7 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: 'Invalid shop ID' }, { status: 400 });
     }
     
-    await connectDB();
+    await dbConnect();
     const menuItem = await req.json();
     
     // Basic validation

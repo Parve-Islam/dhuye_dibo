@@ -2,11 +2,11 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import connect from '@/lib/db';
 import User from '@/models/User';
+import dbConnect from '@/lib/dbConnect';
 
-// Connect to the database
-connect();
+// dbConnect to the database
+dbConnect();
 
 // GET handler to fetch security settings
 export async function GET() {
